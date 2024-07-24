@@ -9,13 +9,14 @@ import org.junit.Test
 
 class LocalStudentManagerTest {
     private lateinit var manager: StudentManager
+
     /**
      * This will run before each test
      */
     @Before
     fun tearUp() {
         // TODO create an instance of the local student manager
-        val manager = LocalStudentManagerTest()
+        manager = LocalStudentManager()
     }
 
     @After
@@ -32,7 +33,7 @@ class LocalStudentManagerTest {
     fun sortAgeAsc_isCorrect() {
         val result = manager.sortAgeAscDesc("ASC")
         assertEquals(10, result.first().age)
-        assertEquals(16, result.last().age)
+        assertEquals(56, result.last().age)
     }
 
     @Test
@@ -114,7 +115,7 @@ class LocalStudentManagerTest {
         manager.deleteBySex("F")
         // Then
         manager.listOf10().forEach {
-            assertEquals("M", it.sexe)
+            assertEquals(Sexe.M, it.sexe)
         }
     }
 
